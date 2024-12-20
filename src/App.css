@@ -48,3 +48,7 @@ nav a.active {
 nav a:focus {
   outline: none;
 }
+
+.hidden-link {
+  display: none;
+}

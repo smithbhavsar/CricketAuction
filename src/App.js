@@ -19,7 +19,7 @@ const App = () => {
     <Router>
       <div>
         <nav>
-          <Link to="/">Dashboard</Link> | <Link to="/players">List of Players</Link> | <Link to="/admin">Admin Panel</Link>
+          <Link to="/">Dashboard</Link> | <Link to="/players">List of Players</Link> | <Link to="/admin" className='.hidden-link'>Admin Panel</Link>
         </nav>
 
         <Routes>
