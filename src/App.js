@@ -6,7 +6,8 @@ import PlayersPage from './PlayersPage';
 import './App.css'; // Import CSS for styling
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:3001'); // Ensure this URL is correct for your backend
+const backendUrl = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+const socket = io(backendUrl);
 
 const App = () => {
   return (
