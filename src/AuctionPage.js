@@ -2,19 +2,31 @@ import React, { useState, useEffect } from 'react';
 import './AuctionPage.css';
 import Alert from '@mui/material/Alert';
 
+const backendUrl = 'https://auction-backend-d0xr.onrender.com';
+
 const AuctionPage = ({ socket }) => {
+  const [players, setPlayers] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // Loading state
   const [auctionData, setAuctionData] = useState(null);
   const [bids, setBids] = useState({});
   const [error, setError] = useState('');
   const [showPrompt, setShowPrompt] = useState(false);
   const [auctionEnded, setAuctionEnded] = useState(false);
+    const [playersLoaded, setPlayersLoaded] = useState(false); // State to track if players data is loaded
 
   useEffect(() => {
-    // Request auction data when the component mounts
+    fetch(`${backendUrl}/players`)
+      .then(res => res.json())
+      .then(data => {
+        setPlayers(data); // Set players data once fetched
+        setPlayersLoaded(true); // Set playersLoaded to true once players data is loaded
+        console.log("I have players data:", data); // Log the players data for debugging
+      });
     socket.emit('getAuctionData');
 
     socket.on('auctionStart', (data) => {
       setAuctionData(data);
+      setIsLoading(false);
     });
 
     socket.on('bidUpdate', (data) => {
@@ -48,6 +60,10 @@ const AuctionPage = ({ socket }) => {
       socket.off('errorMessage');
     };
   }, [socket]);
+
+  if (isLoading || !playersLoaded) {
+    return <p>Loading auction and player data...</p>; // Show loading state if auction data or players data is not ready
+  }
 
   const handleBid = (captainId) => {
     const bidAmount = bids[captainId];
