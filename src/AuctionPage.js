@@ -20,7 +20,6 @@ const AuctionPage = ({ socket }) => {
       .then(data => {
         setPlayers(data);
         setPlayersLoaded(true);
-        console.log("I have players data:", data);
       });
     socket.emit('getAuctionData');
 
@@ -94,10 +93,6 @@ const AuctionPage = ({ socket }) => {
     setShowPrompt(false);
   };
 
-  const handleResetAuction = () => {
-    socket.emit('resetAuction');
-  };
-
   return (
     <div className="auction-page">
       {auctionEnded && (
@@ -151,25 +146,24 @@ const AuctionPage = ({ socket }) => {
               </div>
             ))}
           </div>
-          <button className="pass-player-button" onClick={handlePassPlayer}>
-            Pass Player
-          </button>
-          <button className="reset-auction-button" onClick={handleResetAuction}>
-            Reset Auction
-          </button>
-          {showPrompt && (
-            <div className="prompt-overlay">
-              <div className="prompt">
-                <h3>Are you sure you want to pass this player?</h3>
-                <button className="confirm" onClick={confirmPassPlayer}>
-                  Yes
-                </button>
-                <button className="cancel" onClick={cancelPassPlayer}>
-                  No
-                </button>
-              </div>
+          <div className="buttons-container">
+            <button className="pass-player-button" onClick={handlePassPlayer}>
+              Pass Player
+            </button>
+          </div>
+        {showPrompt && (
+          <div className="prompt-overlay">
+            <div className="prompt">
+              <h3>Are you sure you want to pass this player?</h3>
+              <button className="confirm" onClick={confirmPassPlayer}>
+                Yes
+              </button>
+              <button className="cancel" onClick={cancelPassPlayer}>
+                No
+              </button>
             </div>
-          )}
+          </div>
+        )}
         </>
       ) : (
         !auctionEnded && <p>Loading auction...</p>
