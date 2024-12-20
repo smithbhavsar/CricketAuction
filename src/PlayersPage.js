@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import './PlayersPage.css'; // Import CSS for styling
 
-const socket = io('http://localhost:3001');
+const backendUrl = 'https://auction-backend-d0xr.onrender.com';
+const socket = io(backendUrl);
 
 function PlayersList() {
   const [players, setPlayers] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/all-players')
+    fetch(`${backendUrl}/all-players`)
       .then(res => res.json())
       .then(data => setPlayers(data));
 

@@ -6,8 +6,13 @@ import PlayersPage from './PlayersPage';
 import './App.css'; // Import CSS for styling
 import io from 'socket.io-client';
 
-const backendUrl = process.env.REACT_APP_API_URL || 'http://localhost:3001';
-const socket = io(backendUrl);
+const backendUrl = 'https://auction-backend-d0xr.onrender.com';
+console.log("Logging the backend url", backendUrl)
+
+const socket = io(backendUrl, {
+    transports: ['websocket', 'polling'], // Ensure compatibility
+    withCredentials: true, // Send credentials with cross-origin requests
+});
 
 const App = () => {
   return (

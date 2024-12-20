@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Dashboard.css';
 
+const backendUrl = 'https://auction-backend-d0xr.onrender.com';
+
 const Dashboard = ({ socket }) => {
   const [players, setPlayers] = useState([]);
   const [auctionData, setAuctionData] = useState(null);
@@ -11,7 +13,7 @@ const Dashboard = ({ socket }) => {
   // Fetch players data initially
   useEffect(() => {
     // Fetch players data
-    fetch('http://localhost:3001/players')
+    fetch(`${backendUrl}/players`)
       .then(res => res.json())
       .then(data => {
         setPlayers(data); // Set players data once fetched
