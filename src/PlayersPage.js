@@ -9,12 +9,18 @@ function PlayersList() {
   const [players, setPlayers] = useState([]);
 
   useEffect(() => {
+    // Fetch all players from the backend on initial load
     fetch(`${backendUrl}/all-players`)
       .then(res => res.json())
       .then(data => setPlayers(data));
 
+    // Listen for bid updates and auction start events from the server
     socket.on('bidUpdate', ({ allPlayers }) => {
-      setPlayers(allPlayers);
+      setPlayers(allPlayers); // Update players list when bid update is received
+    });
+
+    socket.on('auctionStart', ({ allPlayers }) => {
+      setPlayers(allPlayers); // Update players list when auction starts or is reset
     });
 
     socket.on('auctionEnd', () => {
@@ -23,6 +29,7 @@ function PlayersList() {
 
     return () => {
       socket.off('bidUpdate');
+      socket.off('auctionStart');
       socket.off('auctionEnd');
     };
   }, []);

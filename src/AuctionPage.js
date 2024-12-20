@@ -6,21 +6,21 @@ const backendUrl = 'https://auction-backend-d0xr.onrender.com';
 
 const AuctionPage = ({ socket }) => {
   const [players, setPlayers] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); // Loading state
+  const [isLoading, setIsLoading] = useState(true);
   const [auctionData, setAuctionData] = useState(null);
   const [bids, setBids] = useState({});
   const [error, setError] = useState('');
   const [showPrompt, setShowPrompt] = useState(false);
   const [auctionEnded, setAuctionEnded] = useState(false);
-    const [playersLoaded, setPlayersLoaded] = useState(false); // State to track if players data is loaded
+  const [playersLoaded, setPlayersLoaded] = useState(false);
 
   useEffect(() => {
     fetch(`${backendUrl}/players`)
       .then(res => res.json())
       .then(data => {
-        setPlayers(data); // Set players data once fetched
-        setPlayersLoaded(true); // Set playersLoaded to true once players data is loaded
-        console.log("I have players data:", data); // Log the players data for debugging
+        setPlayers(data);
+        setPlayersLoaded(true);
+        console.log("I have players data:", data);
       });
     socket.emit('getAuctionData');
 
@@ -42,14 +42,13 @@ const AuctionPage = ({ socket }) => {
 
     socket.on('auctionEnd', () => {
       setAuctionEnded(true);
-      setAuctionData(null); // Optionally reset auction data
+      setAuctionData(null);
     });
 
-    // Listen for error messages from the server
     socket.on('errorMessage', (message) => {
-      console.log("This is error message",message)
+      console.log("This is error message", message);
       setError(message);
-      setTimeout(() => setError(''), 3000); // Clear the error message after 3 seconds
+      setTimeout(() => setError(''), 3000);
     });
 
     return () => {
@@ -60,10 +59,6 @@ const AuctionPage = ({ socket }) => {
       socket.off('errorMessage');
     };
   }, [socket]);
-
-  if (isLoading || !playersLoaded) {
-    return <p>Loading auction and player data...</p>; // Show loading state if auction data or players data is not ready
-  }
 
   const handleBid = (captainId) => {
     const bidAmount = bids[captainId];
@@ -99,6 +94,10 @@ const AuctionPage = ({ socket }) => {
     setShowPrompt(false);
   };
 
+  const handleResetAuction = () => {
+    socket.emit('resetAuction');
+  };
+
   return (
     <div className="auction-page">
       {auctionEnded && (
@@ -108,7 +107,6 @@ const AuctionPage = ({ socket }) => {
         </div>
       )}
 
-      {/* Display error alert */}
       {error && (
         <Alert severity="error">{error}</Alert>
       )}
@@ -155,6 +153,9 @@ const AuctionPage = ({ socket }) => {
           </div>
           <button className="pass-player-button" onClick={handlePassPlayer}>
             Pass Player
+          </button>
+          <button className="reset-auction-button" onClick={handleResetAuction}>
+            Reset Auction
           </button>
           {showPrompt && (
             <div className="prompt-overlay">
