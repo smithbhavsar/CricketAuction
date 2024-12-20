@@ -1,0 +1,125 @@
+/* Dashboard.css */
+
+/* General layout */
+.dashboard {
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Section styling */
+  .current-player, .live-feed, .teams {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .current-player h3, .live-feed h3, .teams h3 {
+    font-size: 1.2rem;
+    color: #444;
+  }
+  
+  .current-player p, .teams h4 {
+    font-size: 1rem;
+    color: #666;
+    margin: 5px 0;
+  }
+  
+  /* Live Auction Feed */
+  .live-feed ul, .teams div {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+  
+  .live-feed li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .live-feed li:last-child {
+    border-bottom: none;
+  }
+  
+  .live-feed li strong {
+    color: #007BFF;
+  }
+  
+  .live-feed li ul {
+    padding-left: 20px;
+    margin-top: 5px;
+  }
+  
+  .live-feed li ul li {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .teams div {
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    margin-top: 10px;
+  }
+  
+  .teams h4 {
+    font-size: 1.1rem;
+    color: #343a40;
+  }
+  
+  /* Current player */
+  .current-player {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .current-player p {
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .current-player strong {
+    color: #007BFF;
+  }
+  
+  /* General styling for captain names and points */
+  .captain-name {
+    font-weight: bold;
+    color: #007BFF;
+  }
+  
+  .captain-points {
+    color: #dc3545;
+    font-weight: bold;
+  }
+  
+  .auction-ended-banner {
+    background-color: #ffcccb;
+    color: #000;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid #ff0000;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+  
+  .auction-ended-banner h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+  
+  .auction-ended-banner p {
+    margin: 10px 0 0;
+    font-size: 1.2rem;
+  }
+  

@@ -1,0 +1,169 @@
+/* General Page Styling */
+.auction-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f1f5f9;
+    color: #333;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: #0d6efd;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Player Details Section */
+.player-details {
+    display: flex;
+    gap: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    min-height: 100px; /* Minimum height */
+}
+
+.player-details > div {
+    background-color: #e7f1ff;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #0d6efd;
+}
+
+/* Captain Grid and Cards */
+.captain-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    align-items: start;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.captain-card {
+    background-color: #ffffff;
+    padding: 20px; /* Adjusted padding */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    min-height: 300px; /* Minimum height */
+    width: 85%; /* Full width */
+}
+
+.captain-card h4 {
+    color: #0d6efd;
+    font-size: 1.2rem;
+}
+
+.captain-card input {
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.captain-card button {
+    background-color: #0d6efd;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.captain-card button:hover {
+    background-color: #0056b3;
+}
+
+/* Acquired Players Section */
+.acquired-players h5 {
+    color: #0d6efd;
+    font-size: 1rem;
+}
+
+/* Pass Player Button */
+.pass-player-button {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
+.pass-player-button:hover {
+    background-color: #b02a37;
+}
+
+/* Prompt Overlay */
+.prompt-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.prompt {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.confirm,
+.cancel {
+    background-color: #0d6efd;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.confirm:hover,
+.cancel:hover {
+    background-color: #0056b3;
+}
+
+.auction-ended-banner {
+    background-color: #ffcccb;
+    color: #000;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid #ff0000;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+  
+  .auction-ended-banner h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+  
+  .auction-ended-banner p {
+    margin: 10px 0 0;
+    font-size: 1.2rem;
+  }
+
+  
+  
+  

@@ -1,0 +1,68 @@
+.players-list {
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+/* Table Styling */
+.players-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.players-table th,
+.players-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.players-table th {
+  background-color: #34495e;
+  color: #fff;
+  font-weight: bold;
+}
+
+.players-table td {
+  font-size: 16px;
+}
+
+.players-table tr:hover {
+  background-color: #ecf0f1;
+}
+
+/* Sold/Available Status Styling */
+.sold-status {
+  color: #2ecc71;
+  font-weight: bold;
+}
+
+.available-status {
+  color: #e67e22;
+  font-weight: bold;
+}
+
+.sold {
+  background-color: #f2f9f2;
+}
+
+.available {
+  background-color: #fff;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+  .players-table th.mobile-hidden,
+  .players-table td.mobile-hidden {
+    display: none;
+  }
+}
