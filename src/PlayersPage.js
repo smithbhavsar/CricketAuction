@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import './PlayersPage.css'; // Import CSS for styling
 
-const socket = io('https://auction-backend-cricket-c1f78ab60217.herokuapp.com/');
+const socket = io('http://localhost:3001');
 
 function PlayersList() {
   const [players, setPlayers] = useState([]);
 
   useEffect(() => {
-    fetch('https://auction-backend-cricket-c1f78ab60217.herokuapp.com//all-players')
+    fetch('http://localhost:3001/all-players')
       .then(res => res.json())
       .then(data => setPlayers(data));
 

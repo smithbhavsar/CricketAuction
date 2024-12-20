@@ -11,7 +11,7 @@ const Dashboard = ({ socket }) => {
   // Fetch players data initially
   useEffect(() => {
     // Fetch players data
-    fetch('https://auction-backend-cricket-c1f78ab60217.herokuapp.com/players')
+    fetch('http://localhost:3001/players')
       .then(res => res.json())
       .then(data => {
         setPlayers(data); // Set players data once fetched
