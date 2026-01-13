@@ -50,15 +50,14 @@ h1 {
 
 .captain-card {
     background-color: #ffffff;
-    padding: 20px; /* Adjusted padding */
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
-    min-height: 300px; /* Minimum height */
-    width: 85%; /* Full width */
+    min-height: 300px;
 }
 
 .captain-card h4 {
