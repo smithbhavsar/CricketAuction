@@ -12,6 +12,15 @@ const Dashboard = ({ socket }) => {
   const [bidLimits, setBidLimits] = useState({});
   const MAX_TEAM_SIZE = 9;
 
+  const TEAM_MAP = {
+  "Parv Gupta": "Springs Titans",
+  "Mukesh Agrawal": "Springs Knight Riders",
+  "Dilip Ratwani": "Springs Warriors",
+  "Rahul Singhvi": "Springs Squad",
+  "Tushar Ghelani": "Springs Avengers",
+  "Dinesh Bansal": "Springs Gladiators",
+};
+
   // Fetch players data initially
   useEffect(() => {
     // Fetch players data
@@ -100,12 +109,25 @@ const Dashboard = ({ socket }) => {
             <h3>Live Auction Feed</h3>
             <ul>
               {auctionData.captains.map((captain) => (
-                <li key={captain.id}>
-                  <strong>{captain.name}:</strong> {captain.team.length} Players
-                  <ul>
+                <li key={captain.id} className="live-feed-item">
+                  <div className="team-header">
+                    <span className="team-name">
+                      {TEAM_MAP[captain.name]}
+                    </span>
+                    <span className="captain-name">
+                      ({captain.name})
+                    </span>
+                  </div>
+                
+                  <div className="team-meta">
+                    {captain.team.length} Players Acquired
+                  </div>
+                
+                  <ul className="team-players">
                     {captain.team.map((player, idx) => (
                       <li key={idx}>
-                        {player.player.name} - {player.bid} Points
+                        <span className="player-name">{player.player.name}</span>
+                        <span className="player-bid">₹{player.bid}</span>
                       </li>
                     ))}
                   </ul>
@@ -114,18 +136,30 @@ const Dashboard = ({ socket }) => {
             </ul>
           </div>
 
-          <div className="teams">
-            <h3>Remaining Points</h3>
-            {auctionData.captains.map((captain) => (
-              <div key={captain.id}>
-                {captain.name} – ₹{captain.points} left  
-                  <br />
-                  <small>
-                    Slots left: {MAX_TEAM_SIZE - captain.team.length} | 
-                    Max Bid Allowed: ₹{bidLimits[captain.id] ?? 0}
-                  </small>
+          <div key={captain.id} className="team-card">
+            <div className="team-header">
+              <span className="team-name">
+                {TEAM_MAP[captain.name]}
+              </span>
+              <span className="captain-name">
+                ({captain.name})
+              </span>
+            </div>
+          
+            <div className="team-stats">
+              <div>
+                <strong>₹{captain.points}</strong>
+                <span>Points Left</span>
               </div>
-            ))}
+              <div>
+                <strong>{MAX_TEAM_SIZE - captain.team.length}</strong>
+                <span>Slots Left</span>
+              </div>
+              <div>
+                <strong>₹{bidLimits[captain.id] ?? 0}</strong>
+                <span>Max Bid</span>
+              </div>
+            </div>
           </div>
         </>
       ) : (
