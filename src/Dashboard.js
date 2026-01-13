@@ -10,7 +10,7 @@ const Dashboard = ({ socket }) => {
   const [auctionEnded, setAuctionEnded] = useState(false); // Auction end state
   const [playersLoaded, setPlayersLoaded] = useState(false); // State to track if players data is loaded
   const [bidLimits, setBidLimits] = useState({});
-  const MAX_TEAM_SIZE = 10;
+  const MAX_TEAM_SIZE = 9;
 
   // Fetch players data initially
   useEffect(() => {
