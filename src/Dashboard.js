@@ -9,6 +9,8 @@ const Dashboard = ({ socket }) => {
   const [isLoading, setIsLoading] = useState(true); // Loading state
   const [auctionEnded, setAuctionEnded] = useState(false); // Auction end state
   const [playersLoaded, setPlayersLoaded] = useState(false); // State to track if players data is loaded
+  const [bidLimits, setBidLimits] = useState({});
+  const MAX_TEAM_SIZE = 10;
 
   // Fetch players data initially
   useEffect(() => {
@@ -27,6 +29,13 @@ const Dashboard = ({ socket }) => {
     socket.on('auctionStart', (data) => {
       setAuctionData(data); // Update auction data when auction starts
       setIsLoading(false); // Stop loading once auction data is fetched
+    });
+
+    socket.on('bidLimits', ({ captainId, maxBid }) => {
+      setBidLimits(prev => ({
+        ...prev,
+        [captainId]: maxBid
+      }));
     });
 
     socket.on('bidUpdate', (data) => {
@@ -51,6 +60,7 @@ const Dashboard = ({ socket }) => {
       socket.off('bidUpdate');
       socket.off('nextPlayer');
       socket.off('auctionEnd');
+      socket.off('bidLimits');
     };
   }, [socket]); // Ensure effect runs when the socket changes
 
@@ -60,7 +70,8 @@ const Dashboard = ({ socket }) => {
 
   return (
     <div className="dashboard">
-      <h2>Indraprasth Premier League Auction 2024</h2>
+      <h2>Riviera Springs Premier League 2026</h2>
+      <h5>Dates: 23rd to 25th January</h5>
 
       {auctionEnded && (
         <div className="auction-ended-banner">
@@ -76,8 +87,9 @@ const Dashboard = ({ socket }) => {
             {auctionData.currentPlayer ? (
               <>
                 <p><strong>Name:</strong> {auctionData.currentPlayer.name}</p>
-                <p><strong>Age:</strong> {auctionData.currentPlayer.age}</p>
+                <p><strong>Age:</strong> {auctionData.currentPlayer.skills}</p>
                 <p><strong>House:</strong> {auctionData.currentPlayer.house}</p>
+                <p><strong>Mobile:</strong> {auctionData.currentPlayer.mobile}</p>
               </>
             ) : (
               <p>Waiting for player...</p>
@@ -106,7 +118,12 @@ const Dashboard = ({ socket }) => {
             <h3>Remaining Points</h3>
             {auctionData.captains.map((captain) => (
               <div key={captain.id}>
-                {captain.name} - {captain.points} Points Left to buy {6 - captain.team.length} more players
+                {captain.name} – ₹{captain.points} left  
+                  <br />
+                  <small>
+                    Slots left: {MAX_TEAM_SIZE - captain.team.length} | 
+                    Max Bid Allowed: ₹{bidLimits[captain.id] ?? 0}
+                  </small>
               </div>
             ))}
           </div>
