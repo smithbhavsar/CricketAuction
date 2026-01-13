@@ -35,7 +35,7 @@ function PlayersList() {
           <tr>
             <th>Name</th>
             <th className="mobile-hidden">House</th>
-            <th className="mobile-hidden">Age</th>
+            <th className="mobile-hidden">Skills</th>
             <th className="mobile-hidden">Mobile</th>
             <th>Status</th>
           </tr>
@@ -45,7 +45,7 @@ function PlayersList() {
             <tr key={player.mobile}>
               <td>{player.name}</td>
               <td className="mobile-hidden">{player.house}</td>
-              <td className="mobile-hidden">{player.age}</td>
+              <td className="mobile-hidden">{player.skills}</td>
               <td className="mobile-hidden">{player.mobile}</td>
               <td>
                 {player.sold ? <span className="sold-status">Sold</span> : <span className="available-status">Available</span>}
