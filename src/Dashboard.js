@@ -87,7 +87,7 @@ const Dashboard = ({ socket }) => {
             {auctionData.currentPlayer ? (
               <>
                 <p><strong>Name:</strong> {auctionData.currentPlayer.name}</p>
-                <p><strong>Age:</strong> {auctionData.currentPlayer.skills}</p>
+                <p><strong>Skills:</strong> {auctionData.currentPlayer.skills}</p>
                 <p><strong>House:</strong> {auctionData.currentPlayer.house}</p>
                 <p><strong>Mobile:</strong> {auctionData.currentPlayer.mobile}</p>
               </>
