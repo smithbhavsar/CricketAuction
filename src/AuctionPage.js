@@ -13,6 +13,8 @@ const AuctionPage = ({ socket }) => {
   const [showPrompt, setShowPrompt] = useState(false);
   const [auctionEnded, setAuctionEnded] = useState(false);
   const [playersLoaded, setPlayersLoaded] = useState(false);
+  const [canPass, setCanPass] = useState(true);
+
 
   useEffect(() => {
     fetch(`${backendUrl}/players`)
@@ -22,6 +24,10 @@ const AuctionPage = ({ socket }) => {
         setPlayersLoaded(true);
       });
     socket.emit('getAuctionData');
+
+    socket.on('passAvailability', ({ canPass }) => {
+        setCanPass(canPass);
+    });
 
     socket.on('auctionStart', (data) => {
       setAuctionData(data);
@@ -147,9 +153,11 @@ const AuctionPage = ({ socket }) => {
             ))}
           </div>
           <div className="buttons-container">
-            <button className="pass-player-button" onClick={handlePassPlayer}>
-              Pass Player
-            </button>
+              <button className="pass-player-button"
+                onClick={handlePassPlayer}
+                disabled={!canPass}>
+                Pass Player
+              </button>
           </div>
         {showPrompt && (
           <div className="prompt-overlay">
