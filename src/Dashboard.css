@@ -188,3 +188,96 @@ button:hover {
     font-size: 1.5rem;
   }
 }
+
+/* ===== Team Header ===== */
+.team-header {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.team-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0d6efd;
+}
+
+.captain-name {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+/* ===== Live Feed Enhancements ===== */
+.live-feed-item {
+  background-color: #f8f9fa;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.team-meta {
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.team-players {
+  padding-left: 0;
+  list-style: none;
+}
+
+.team-players li {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.player-name {
+  font-weight: 500;
+  color: #333;
+}
+
+.player-bid {
+  font-weight: 600;
+  color: #198754;
+}
+
+/* ===== Team Cards (Remaining Points) ===== */
+.team-card {
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+
+.team-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 10px;
+  gap: 10px;
+  text-align: center;
+}
+
+.team-stats div {
+  background-color: #e9ecef;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.team-stats strong {
+  display: block;
+  font-size: 1rem;
+  color: #212529;
+}
+
+.team-stats span {
+  font-size: 0.75rem;
+  color: #6c757d;
+}
