@@ -136,31 +136,38 @@ const Dashboard = ({ socket }) => {
             </ul>
           </div>
 
-          <div key={captain.id} className="team-card">
-            <div className="team-header">
-              <span className="team-name">
-                {TEAM_MAP[captain.name]}
-              </span>
-              <span className="captain-name">
-                ({captain.name})
-              </span>
-            </div>
+          <div className="teams">
+            <h3>Remaining Points</h3>
           
-            <div className="team-stats">
-              <div>
-                <strong>₹{captain.points}</strong>
-                <span>Points Left</span>
+            {auctionData.captains.map((captain) => (
+              <div key={captain.id} className="team-card">
+                <div className="team-header">
+                  <span className="team-name">
+                    {TEAM_MAP[captain.name]}
+                  </span>
+                  <span className="captain-name">
+                    ({captain.name})
+                  </span>
+                </div>
+          
+                <div className="team-stats">
+                  <div>
+                    <strong>₹{captain.points}</strong>
+                    <span>Points Left</span>
+                  </div>
+                  <div>
+                    <strong>{MAX_TEAM_SIZE - captain.team.length}</strong>
+                    <span>Slots Left</span>
+                  </div>
+                  <div>
+                    <strong>₹{bidLimits[captain.id] ?? 0}</strong>
+                    <span>Max Bid</span>
+                  </div>
+                </div>
               </div>
-              <div>
-                <strong>{MAX_TEAM_SIZE - captain.team.length}</strong>
-                <span>Slots Left</span>
-              </div>
-              <div>
-                <strong>₹{bidLimits[captain.id] ?? 0}</strong>
-                <span>Max Bid</span>
-              </div>
-            </div>
+            ))}
           </div>
+
         </>
       ) : (
         !auctionEnded && <p>Loading auction data...</p>
