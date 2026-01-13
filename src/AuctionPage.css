@@ -40,9 +40,9 @@ h1 {
 /* Captain Grid and Cards */
 .captain-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
-    align-items: start;
+    align-items: stretch;
     justify-content: center;
     width: 100%;
     margin: 20px 0;
