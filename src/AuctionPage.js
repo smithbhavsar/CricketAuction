@@ -15,6 +15,16 @@ const AuctionPage = ({ socket }) => {
   const [playersLoaded, setPlayersLoaded] = useState(false);
   const [canPass, setCanPass] = useState(true);
 
+  const TEAM_MAP = {
+  "Parv Gupta": "Springs Titans",
+  "Mukesh Agrawal": "Springs Knight Riders",
+  "Dilip Ratwani": "Springs Warriors",
+  "Rahul Singhvi": "Springs Squad",
+  "Tushar Ghelani": "Springs Avengers",
+  "Dinesh Bansal": "Springs Gladiators",
+  "Ashok Sharma": "Spring Royals",
+  "Atul Narang": "Spring Kings"
+};
 
   useEffect(() => {
     fetch(`${backendUrl}/players`)
@@ -125,7 +135,12 @@ const AuctionPage = ({ socket }) => {
           <div className="captain-grid">
             {auctionData.captains.map((captain) => (
               <div key={captain.id} className="captain-card">
-                <h4>{captain.name}</h4>
+                <h4 className="team-title">
+                    {TEAM_MAP[captain.name] || "Unknown Team"}
+                  </h4>
+                  <p className="captain-subtitle">
+                    ({captain.name})
+                  </p>
                 <p>Points Left: {captain.points}</p>
                 <input
                   type="number"
