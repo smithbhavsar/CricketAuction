@@ -10,7 +10,7 @@ const Dashboard = ({ socket }) => {
   const [auctionEnded, setAuctionEnded] = useState(false); // Auction end state
   const [playersLoaded, setPlayersLoaded] = useState(false); // State to track if players data is loaded
   const [bidLimits, setBidLimits] = useState({});
-  const MAX_TEAM_SIZE = 9;
+  const MAX_TEAM_SIZE = 7;
 
   const TEAM_MAP = {
   "Parv Gupta": "Springs Titans",
@@ -19,6 +19,8 @@ const Dashboard = ({ socket }) => {
   "Rahul Singhvi": "Springs Squad",
   "Tushar Ghelani": "Springs Avengers",
   "Dinesh Bansal": "Springs Gladiators",
+  "Ashok Sharma": "Spring Royals",
+  "Atul Narang": "Spring Kings"
 };
 
   // Fetch players data initially
