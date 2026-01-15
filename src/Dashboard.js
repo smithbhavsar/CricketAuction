@@ -20,7 +20,7 @@ const Dashboard = ({ socket }) => {
   "Tushar Ghelani": "Springs Avengers",
   "Dinesh Bansal": "Springs Gladiators",
   "Ashok Sharma": "Spring Royals",
-  "Atul Narang": "Spring Kings"
+  "Amit Gajjar": "Spring Kings"
 };
 
   // Fetch players data initially
