@@ -23,7 +23,7 @@ const AuctionPage = ({ socket }) => {
   "Tushar Ghelani": "Springs Avengers",
   "Dinesh Bansal": "Springs Gladiators",
   "Ashok Sharma": "Spring Royals",
-  "Atul Narang": "Spring Kings"
+  "Amit Gajjar": "Spring Kings"
 };
 
   useEffect(() => {
